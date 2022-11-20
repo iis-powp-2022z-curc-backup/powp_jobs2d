@@ -31,10 +31,11 @@ public class DrawerToJobs2dMagicAdapter extends DrawPanelController implements J
 		line.setStartCoordinates(this.startX, this.startY);
 		line.setEndCoordinates(x, y);
 		controller.drawLine(line);
+		setPosition(x, y);
 	}
 
 	@Override
 	public String toString() {
-		return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+		return "DrawerToJobs2dMagicAdapter";
 	}
 }
