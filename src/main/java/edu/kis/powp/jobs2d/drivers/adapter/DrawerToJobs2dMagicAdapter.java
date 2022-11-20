@@ -26,7 +26,6 @@ public class DrawerToJobs2dMagicAdapter extends DrawPanelController implements J
 	@Override
 	public void operateTo(int x, int y) {
 		DrawPanelController controller = DrawerFeature.getDrawerController();
-		DefaultDrawerFrame.getDefaultDrawerFrame().setVisible(true);
 		ILine line = LineFactory.getBasicLine();
 		line.setStartCoordinates(this.startX, this.startY);
 		line.setEndCoordinates(x, y);
