@@ -24,11 +24,12 @@ public class DrawDriverAdapter extends DrawPanelController implements Job2dDrive
 
 	@Override
 	public void operateTo(int x, int y) {
+		DrawPanelController controller = DrawerFeature.getDrawerController();
 		ILine line = LineFactory.getBasicLine();
 		line.setStartCoordinates(this.startX, this.startY);
 		line.setEndCoordinates(x, y);
 
-		drawLine(line);
+		controller.drawLine(line);
 		setPosition(x, y);
 	}
 
