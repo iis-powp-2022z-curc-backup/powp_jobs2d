@@ -2,6 +2,7 @@ package edu.kis.powp.jobs2d;
 
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.DriverAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
@@ -38,6 +39,9 @@ public class TestJobs2dPatterns {
 
         Job2dDriver testDriver = new DriverAdapter();
         DriverFeature.addDriver("Driver Adapter", testDriver);
+
+        Job2dDriver lineDrawerAdapter = new LineDrawerAdapter();
+        DriverFeature.addDriver("Line Drawer Adapter", lineDrawerAdapter);
 
         DriverFeature.updateDriverInfo();
     }
