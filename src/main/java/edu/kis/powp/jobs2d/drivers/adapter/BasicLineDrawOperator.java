@@ -8,12 +8,12 @@ import edu.kis.powp.jobs2d.Job2dDriver;
 import static edu.kis.powp.jobs2d.features.DrawerFeature.getDrawerController;
 
 /**
- * driver adapter to drawer with several bugs.
+ * basic driver operator to drawer with several bugs.
  */
-public class LineDrawOperator extends DrawPanelController implements Job2dDriver {
+public class BasicLineDrawOperator extends DrawPanelController implements Job2dDriver {
 	private int startX = 0, startY = 0;
 
-	public LineDrawOperator() {
+	public BasicLineDrawOperator() {
 		super();
 	}
 
@@ -36,6 +36,6 @@ public class LineDrawOperator extends DrawPanelController implements Job2dDriver
 
 	@Override
 	public String toString() {
-		return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+		return "Basic line drawer operator";
 	}
 }
