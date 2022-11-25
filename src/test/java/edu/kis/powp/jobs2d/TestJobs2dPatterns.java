@@ -2,9 +2,9 @@ package edu.kis.powp.jobs2d;
 
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.DriverAdapter;
-import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
+import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,10 +20,10 @@ public class TestJobs2dPatterns {
      * @param application Application context.
      */
     private static void setupPresetTests(Application application) {
-        SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
-                DriverFeature.getDriverManager());
-
-        application.addTest("Figure Joe 1", selectTestFigureOptionListener);
+        application.addTest("Figure Joe 1",
+                event -> FiguresJoe.figureScript1(DriverFeature.getDriverManager().getCurrentDriver()));
+        application.addTest("Figure Joe 2",
+                event -> FiguresJoe.figureScript2(DriverFeature.getDriverManager().getCurrentDriver()));
     }
 
     /**
