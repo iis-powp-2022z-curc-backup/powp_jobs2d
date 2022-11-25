@@ -29,6 +29,6 @@ public class LineDrawerAdapter implements Job2dDriver {
     specialLine.setStartCoordinates(this.startX, this.startY);
     specialLine.setEndCoordinates(x, y);
     setPosition(x, y);
-    linesDrawer.drawLines(specialLine); // display shape in main app window
+    linesDrawer.drawLines(specialLine);
   }
 }
