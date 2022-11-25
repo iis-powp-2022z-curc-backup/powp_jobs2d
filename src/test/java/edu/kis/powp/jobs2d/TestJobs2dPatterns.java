@@ -37,7 +37,7 @@ public class TestJobs2dPatterns {
         DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
         Job2dDriver testDriver = new DriverAdapter();
-        DriverFeature.addDriver("Buggy Simulator", testDriver);
+        DriverFeature.addDriver("Driver Adapter", testDriver);
 
         DriverFeature.updateDriverInfo();
     }
@@ -61,18 +61,16 @@ public class TestJobs2dPatterns {
      * Launch the application.
      */
     public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Application app = new Application("2d jobs Visio");
-                DrawerFeature.setupDrawerPlugin(app);
+        EventQueue.invokeLater(() -> {
+            Application app = new Application("2d jobs Visio");
+            DrawerFeature.setupDrawerPlugin(app);
 
-                DriverFeature.setupDriverPlugin(app);
-                setupDrivers(app);
-                setupPresetTests(app);
-                setupLogger(app);
+            DriverFeature.setupDriverPlugin(app);
+            setupDrivers(app);
+            setupPresetTests(app);
+            setupLogger(app);
 
-                app.setVisibility(true);
-            }
+            app.setVisibility(true);
         });
     }
 
