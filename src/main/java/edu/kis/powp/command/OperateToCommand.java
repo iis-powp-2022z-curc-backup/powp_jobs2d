@@ -16,6 +16,7 @@ public class OperateToCommand implements DriverCommand {
 
     @Override
     public void execute() {
+        if (this.driver == null) return;
         this.driver.operateTo(this.x, this.y);
     }
 
