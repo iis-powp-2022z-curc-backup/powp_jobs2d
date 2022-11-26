@@ -8,7 +8,8 @@ import java.util.logging.Logger;
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.powp.appbase.Application;
-import edu.kis.powp.jobs2d.drivers.adapter.MyAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.LineDriver;
+import edu.kis.powp.jobs2d.drivers.adapter.SpecialLineDriver;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
@@ -27,11 +28,12 @@ public class TestJobs2dPatterns {
 				DriverFeature.getDriverManager());
 
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
+		application.addTest("Figure Pat 1", selectTestFigureOptionListener);
 	}
 
 	/**
 	 * Setup driver manager, and set default driver for application.
-	 * 
+	 *
 	 * @param application Application context.
 	 */
 	private static void setupDrivers(Application application) {
@@ -39,15 +41,18 @@ public class TestJobs2dPatterns {
 		DriverFeature.addDriver("Logger Driver", loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
-		Job2dDriver testDriver = new MyAdapter(application);
-		DriverFeature.addDriver("Buggy Simulator", testDriver);
+		Job2dDriver lineDriver = new LineDriver(application);
+		DriverFeature.addDriver("Line driver", lineDriver);
+
+		Job2dDriver specialLineDriver = new SpecialLineDriver(application);
+		DriverFeature.addDriver("Special line driver", specialLineDriver);
 
 		DriverFeature.updateDriverInfo();
 	}
 
 	/**
 	 * Auxiliary routines to enable using Buggy Simulator.
-	 * 
+	 *
 	 * @param application Application context.
 	 */
 	private static void setupDefaultDrawerVisibilityManagement(Application application) {
@@ -82,10 +87,8 @@ public class TestJobs2dPatterns {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				Application app = new Application("2d jobs Visio");
-				DrawerFeature.setupDrawerPlugin(app);
-				setupDefaultDrawerVisibilityManagement(app);
-
 				DriverFeature.setupDriverPlugin(app);
+
 				setupDrivers(app);
 				setupPresetTests(app);
 				setupLogger(app);
@@ -94,5 +97,4 @@ public class TestJobs2dPatterns {
 			}
 		});
 	}
-
 }
