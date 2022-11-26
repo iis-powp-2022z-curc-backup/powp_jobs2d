@@ -1,11 +1,11 @@
 package edu.kis.powp.command;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ComplexCommand implements DriverCommand {
-    private final ArrayList<DriverCommand> commands;
+    private final List<DriverCommand> commands;
 
-    public ComplexCommand(ArrayList<DriverCommand> commands) {
+    public ComplexCommand(List<DriverCommand> commands) {
         this.commands = commands;
     }
 
