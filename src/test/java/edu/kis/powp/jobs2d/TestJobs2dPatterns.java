@@ -3,6 +3,7 @@ package edu.kis.powp.jobs2d;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.DriverAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
+import edu.kis.powp.jobs2d.drivers.command.fabric.CommandFactory;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
@@ -25,6 +26,10 @@ public class TestJobs2dPatterns {
                 event -> FiguresJoe.figureScript1(DriverFeature.getDriverManager().getCurrentDriver()));
         application.addTest("Figure Joe 2",
                 event -> FiguresJoe.figureScript2(DriverFeature.getDriverManager().getCurrentDriver()));
+        application.addTest("Rectangle",
+                event -> CommandFactory.getRectangle().execute(DriverFeature.getDriverManager().getCurrentDriver()));
+        application.addTest("Trapeze",
+                event -> CommandFactory.getTrapeze().execute(DriverFeature.getDriverManager().getCurrentDriver()));
     }
 
     /**
