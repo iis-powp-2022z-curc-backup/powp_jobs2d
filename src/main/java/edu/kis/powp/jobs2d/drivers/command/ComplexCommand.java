@@ -6,10 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComplexCommand implements DriverCommand {
-    List<DriverCommand> commandList = new ArrayList<>();
+    private List<DriverCommand> commandList;
 
-    public void addCommand(DriverCommand command) {
-        this.commandList.add(command);
+    public ComplexCommand(List<DriverCommand> commandList) {
+        this.commandList = commandList;
+    }
+
+    public void setCommandList(List<DriverCommand> commandList) {
+        this.commandList = commandList;
     }
 
     @Override
