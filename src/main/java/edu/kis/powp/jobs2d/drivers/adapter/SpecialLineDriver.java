@@ -6,17 +6,14 @@ import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.Job2dDriver;
 
-import javax.swing.*;
-
 
 public class SpecialLineDriver extends DrawPanelController implements Job2dDriver {
     private int startX = 0, startY = 0;
-    private JPanel drawArea = null;
 
     public SpecialLineDriver(Application application) {
         super();
-        drawArea = application.getFreePanel();
-        //this.initialize(application.getFreePanel());
+
+        this.initialize(application.getFreePanel());
     }
 
     @Override
