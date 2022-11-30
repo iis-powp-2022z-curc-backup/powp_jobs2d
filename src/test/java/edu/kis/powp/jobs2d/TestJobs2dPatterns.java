@@ -1,5 +1,6 @@
 package edu.kis.powp.jobs2d;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
@@ -53,6 +54,9 @@ public class TestJobs2dPatterns {
 		
 		Job2dDriver driverSpecialLine = new LineDrawerAdapter(LineFactory.getSpecialLine());
 		DriverFeature.addDriver("Special Line", driverSpecialLine);
+		
+		Job2dDriver driverConfigLine = new LineDrawerAdapter(new LineConfig(Color.GREEN, 10, true));
+		DriverFeature.addDriver("Config Line", driverConfigLine);
 		
 		DriverFeature.updateDriverInfo();
 	}
