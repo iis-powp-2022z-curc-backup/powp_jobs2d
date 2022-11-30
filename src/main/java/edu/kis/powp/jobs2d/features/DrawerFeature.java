@@ -1,11 +1,11 @@
 package edu.kis.powp.jobs2d.features;
 
+import edu.kis.legacy.drawer.shape.ILine;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.events.SelectClearPanelOptionListener;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 
 public class DrawerFeature {
-
 	private static DrawPanelController drawerController;
 
 	/**
@@ -30,5 +30,9 @@ public class DrawerFeature {
 	 */
 	public static DrawPanelController getDrawerController() {
 		return drawerController;
+	}
+
+	public void drawLine(ILine line){
+		drawerController.drawLine(line);
 	}
 }
