@@ -10,7 +10,7 @@ import edu.kis.powp.jobs2d.Job2dDriver;
  * driver adapter to drawer with several bugs.
  */
 public class LineDrawerAdapter implements Job2dDriver {
-	private int startX = 0, startY = 0, line_length = 10;
+	private int startX = 0, startY = 0, line_length = 50;
 
 	public LineDrawerAdapter() {
 		super();
@@ -27,14 +27,31 @@ public class LineDrawerAdapter implements Job2dDriver {
 		ILine line = LineFactory.getBasicLine();
 		int yFactor = (y-this.startY)/line_length;
 		int xFactor = (x-this.startX)/line_length;
-		while(Math.abs(y -this.startY)<line_length && Math.abs(x -this.startX)<line_length ) {
-			line.setStartCoordinates(this.startX, this.startY);
-			line.setEndCoordinates(this.startX + xFactor, this.startY + yFactor);
-			DrawerFeature.getDrawerController().drawLine(line);
-			setPosition(this.startX + xFactor * 2, this.startY + yFactor * 2);
+		boolean isInDrawingMode = true;
+		while(true) {
+			
+			int newX = x, newY = y;
+			if(Math.abs(y -this.startY)>(Math.abs(yFactor)*3) && Math.abs(x -this.startX)>(Math.abs(xFactor)*3)) {
+				newX = this.startX +xFactor;
+				newY = this.startY +yFactor;
+			}else if(Math.abs(y -this.startY)<=(Math.abs(yFactor)*3) && Math.abs(x -this.startX)>(Math.abs(xFactor)*3)) {
+				newX = this.startX +xFactor;
+			}else if(Math.abs(y -this.startY)>(Math.abs(yFactor)*3) && Math.abs(x -this.startX)<=(Math.abs(xFactor)*3)) {
+				newY = this.startY +yFactor;
+			}else {
+				break;
+			}
+			if (isInDrawingMode) {
+				line.setStartCoordinates(this.startX, this.startY);
+				line.setEndCoordinates(newX, newY);
+				DrawerFeature.getDrawerController().drawLine(line);
+			}
+			
+			setPosition(newX, newY);
+			isInDrawingMode = !isInDrawingMode;
 		}
 		setPosition(x,y);
-    
+	
 	}
 
 	@Override
