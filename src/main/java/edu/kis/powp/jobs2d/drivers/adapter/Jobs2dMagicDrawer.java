@@ -28,13 +28,12 @@ public class Jobs2dMagicDrawer extends DrawPanelController implements Job2dDrive
 		line.setStartCoordinates(this.startX, this.startY);
 		line.setEndCoordinates(x, y);
 
-//		drawPanelController.drawLine(line);
 		DrawerFeature.getDrawerController().drawLine(line);
 		setPosition(x, y);
 	}
 
 	@Override
 	public String toString() {
-		return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+		return "Jons2dMagicDrawer";
 	}
 }
