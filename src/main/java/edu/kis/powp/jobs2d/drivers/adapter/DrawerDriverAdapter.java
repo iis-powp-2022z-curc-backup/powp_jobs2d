@@ -29,13 +29,12 @@ public class DrawerDriverAdapter extends DrawPanelController implements Job2dDri
 		line.setStartCoordinates(this.startX, this.startY);
 		line.setEndCoordinates(x, y);
 		DrawPanelController drawerController = getDrawerController();
-
 		drawerController.drawLine(line);
-		//drawLine(line);
+		setPosition(x,y);
 	}
 
 	@Override
 	public String toString() {
-		return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+		return "DrawerDriverAdapter";
 	}
 }
