@@ -30,6 +30,7 @@ public class Jobs2dMagicDrawer extends DrawPanelController implements Job2dDrive
 
 //		drawPanelController.drawLine(line);
 		DrawerFeature.getDrawerController().drawLine(line);
+		setPosition(x, y);
 	}
 
 	@Override
