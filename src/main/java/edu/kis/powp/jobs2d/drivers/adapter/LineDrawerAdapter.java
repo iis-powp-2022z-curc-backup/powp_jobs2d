@@ -25,33 +25,24 @@ public class LineDrawerAdapter implements Job2dDriver {
 	@Override
 	public void operateTo(int x, int y) {
 		ILine line = LineFactory.getBasicLine();
-		int yFactor = (y-this.startY)/line_length;
-		int xFactor = (x-this.startX)/line_length;
-		boolean isInDrawingMode = true;
-		while(true) {
-			
-			int newX = x, newY = y;
-			if(Math.abs(y -this.startY)>(Math.abs(yFactor)*3) && Math.abs(x -this.startX)>(Math.abs(xFactor)*3)) {
-				newX = this.startX +xFactor;
-				newY = this.startY +yFactor;
-			}else if(Math.abs(y -this.startY)<=(Math.abs(yFactor)*3) && Math.abs(x -this.startX)>(Math.abs(xFactor)*3)) {
-				newX = this.startX +xFactor;
-			}else if(Math.abs(y -this.startY)>(Math.abs(yFactor)*3) && Math.abs(x -this.startX)<=(Math.abs(xFactor)*3)) {
-				newY = this.startY +yFactor;
-			}else {
-				break;
-			}
-			if (isInDrawingMode) {
-				line.setStartCoordinates(this.startX, this.startY);
+		int xDistance = x-this.startX;
+		int yDistance = y-this.startY;
+		double numberOfSteps = 12;
+		boolean isInDrawingMode = false;
+		
+		for(int i =0; i<numberOfSteps; i++) {
+			int newX = this.startX + (int)((i/numberOfSteps)*xDistance);
+			int newY = this.startY + (int)((i/numberOfSteps)*yDistance);
+			if(isInDrawingMode) {
 				line.setEndCoordinates(newX, newY);
 				DrawerFeature.getDrawerController().drawLine(line);
+			}else {
+				line.setStartCoordinates(newX, newY);
 			}
-			
-			setPosition(newX, newY);
-			isInDrawingMode = !isInDrawingMode;
+			isInDrawingMode = !isInDrawingMode; 
 		}
 		setPosition(x,y);
-	
+		
 	}
 
 	@Override
