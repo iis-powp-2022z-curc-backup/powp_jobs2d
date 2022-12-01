@@ -6,15 +6,17 @@ import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.jobs2d.Job2dDriver;
 
 /**
- * Drawer to Jobs2dMagic adapter
+ * Line drawer adapter – draw lines using Job2dDriver
  */
-public class DrawerToJobs2dMagicAdapter implements Job2dDriver {
+public class LineDrawerAdapter implements Job2dDriver {
 	private int startX = 0, startY = 0;
 	private final DrawPanelController drawPanelController;
+	private final ILine line;
 
-	public DrawerToJobs2dMagicAdapter(DrawPanelController drawPanelController) {
+	public LineDrawerAdapter(DrawPanelController drawPanelController, ILine line) {
 		super();
 		this.drawPanelController = drawPanelController;
+		this.line = line;
 	}
 
 	@Override
@@ -25,7 +27,6 @@ public class DrawerToJobs2dMagicAdapter implements Job2dDriver {
 
 	@Override
 	public void operateTo(int x, int y) {
-		ILine line = LineFactory.getBasicLine();
 		line.setStartCoordinates(this.startX, this.startY);
 		line.setEndCoordinates(x, y);
 		drawPanelController.drawLine(line);
@@ -34,6 +35,6 @@ public class DrawerToJobs2dMagicAdapter implements Job2dDriver {
 
 	@Override
 	public String toString() {
-		return "DrawerToJobs2dMagicAdapter";
+		return "LineDrawerAdapter – " + line.getClass().getSimpleName();
 	}
 }
