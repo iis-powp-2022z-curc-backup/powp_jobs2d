@@ -2,7 +2,9 @@ package edu.kis.powp.jobs2d.enums;
 
 public enum TestFigureEnum {
     FIGURE_JOE_1("Figure Joe 1"),
-    FIGURE_JOE_2("Figure Joe 2");
+    FIGURE_JOE_2("Figure Joe 2"),
+    FIGURE_RECTANGLE("Figure rectangle"),
+    FIGURE_TRIANGLE("Figure triangle");
 
     private final String name;
 

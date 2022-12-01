@@ -3,6 +3,7 @@ package edu.kis.powp.jobs2d.events;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import edu.kis.powp.factory.CommandFactory;
 import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.enums.TestFigureEnum;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
@@ -28,6 +29,14 @@ public class SelectTestFigureOptionListener implements ActionListener {
 				case FIGURE_JOE_2:
 					DrawerFeature.getDrawerController().clearPanel();
 					FiguresJoe.figureScript2(driverManager.getCurrentDriver());
+					break;
+				case FIGURE_RECTANGLE:
+					DrawerFeature.getDrawerController().clearPanel();
+					CommandFactory.getDrawRectangleCommand().execute(driverManager.getCurrentDriver());
+					break;
+				case FIGURE_TRIANGLE:
+					DrawerFeature.getDrawerController().clearPanel();
+					CommandFactory.getDrawTriangleCommand().execute(driverManager.getCurrentDriver());
 					break;
 				default:
 					System.out.println("Test not yet implemented: " + testName);
