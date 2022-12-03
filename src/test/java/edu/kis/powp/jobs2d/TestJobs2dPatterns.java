@@ -2,7 +2,6 @@ package edu.kis.powp.jobs2d;
 
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,13 +11,12 @@ import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawDriverAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
+import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
-import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
-import edu.kis.powp.jobs2d.LineConfig;
-
+import edu.kis.powp.jobs2d.events.FigureTypes;
 
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -29,24 +27,14 @@ public class TestJobs2dPatterns {
 	 * @param application Application context.
 	 */
 	private static void setupPresetTests(Application application) {
-		ActionListener selectTestFigureOptionListener1 = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent actionEvent) {
-				DrawerFeature.getDrawerController().clearPanel();
-				FiguresJoe.figureScript1(DriverFeature.getDriverManager().getCurrentDriver());
-			}
-		};
-
-		ActionListener selectTestFigureOptionListener2 = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent actionEvent) {
-				DrawerFeature.getDrawerController().clearPanel();
-				FiguresJoe.figureScript2(DriverFeature.getDriverManager().getCurrentDriver());
-			}
-		};
-
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener1);
-		application.addTest("Figure Joe 2", selectTestFigureOptionListener2);
+		application.addTest("Figure Joe 1",
+				new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), FigureTypes.FIGURE_JOE_1));
+		application.addTest("Figure Joe 2",
+				new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), FigureTypes.FIGURE_JOE_2));
+		application.addTest("Rectangle",
+				new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), FigureTypes.RECTANGLE));
+		application.addTest("Triangle",
+				new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), FigureTypes.TRIANGLE));
 	}
 
 	/**
@@ -115,7 +103,6 @@ public class TestJobs2dPatterns {
 			public void run() {
 				Application app = new Application("2d jobs Visio");
 				DrawerFeature.setupDrawerPlugin(app);
-
 				DriverFeature.setupDriverPlugin(app);
 				setupDrivers(app);
 				setupPresetTests(app);
