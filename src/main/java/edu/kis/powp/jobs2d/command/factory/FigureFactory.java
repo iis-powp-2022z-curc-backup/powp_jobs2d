@@ -1,11 +1,11 @@
-package edu.kis.powp.jobs2d.drivers.command.fabric;
+package edu.kis.powp.jobs2d.command.factory;
 
-import edu.kis.powp.jobs2d.drivers.command.ComplexCommand;
-import edu.kis.powp.jobs2d.drivers.command.DriverCommand;
-import edu.kis.powp.jobs2d.drivers.command.OperateToCommand;
-import edu.kis.powp.jobs2d.drivers.command.SetPositionCommand;
+import edu.kis.powp.jobs2d.command.ComplexCommand;
+import edu.kis.powp.jobs2d.command.DriverCommand;
+import edu.kis.powp.jobs2d.command.OperateToCommand;
+import edu.kis.powp.jobs2d.command.SetPositionCommand;
 
-public class CommandFactory {
+public class FigureFactory {
     public static DriverCommand getRectangle() {
         final ComplexCommand complexCommand = new ComplexCommand();
         complexCommand.addCommand(new SetPositionCommand(0, 0));
