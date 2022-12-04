@@ -9,7 +9,7 @@ import edu.kis.powp.jobs2d.features.DrawerFeature;
 /**
  * Driver Adapter for DrawPanelController.
  */
-public class DrawDriverAdapter extends DrawPanelController implements Job2dDriver {
+public class DrawDriverAdapter implements Job2dDriver {
 	private int startX = 0, startY = 0;
 
 	public DrawDriverAdapter() {
