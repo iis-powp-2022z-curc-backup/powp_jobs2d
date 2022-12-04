@@ -3,6 +3,8 @@ package edu.kis.powp.jobs2d.events;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import edu.kis.powp.factories.DiamondFactory;
+import edu.kis.powp.factories.StarFactory;
 import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 import edu.kis.powp.jobs2d.utils.FigureTypes;
@@ -25,6 +27,14 @@ public class SelectTestFigureOptionListener implements ActionListener {
 
 			case JOE_2:
 				FiguresJoe.figureScript2(driverManager.getCurrentDriver());
+				break;
+
+			case DIAMOND:
+				DiamondFactory.getDiamondCommands().execute(driverManager.getCurrentDriver());
+				break;
+
+			case STAR:
+				StarFactory.getStarCommands().execute(driverManager.getCurrentDriver());
 				break;
 		}
 	}

@@ -29,6 +29,10 @@ public class TestJobs2dPatterns {
 				new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), FigureTypes.JOE_1));
 		application.addTest("Figure Pat 1",
 				new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), FigureTypes.JOE_2));
+		application.addTest("Diamond Figure",
+				new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), FigureTypes.DIAMOND));
+		application.addTest("Star Figure",
+				new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), FigureTypes.STAR));
 	}
 
 	/**
