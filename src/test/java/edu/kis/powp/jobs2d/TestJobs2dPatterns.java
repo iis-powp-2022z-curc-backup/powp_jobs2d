@@ -14,6 +14,7 @@ import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
+import edu.kis.powp.jobs2d.utils.FigureTypes;
 
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -24,11 +25,10 @@ public class TestJobs2dPatterns {
 	 * @param application Application context.
 	 */
 	private static void setupPresetTests(Application application) {
-		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
-				DriverFeature.getDriverManager());
-
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
-		application.addTest("Figure Pat 1", selectTestFigureOptionListener);
+		application.addTest("Figure Joe 1",
+				new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), FigureTypes.JOE_1));
+		application.addTest("Figure Pat 1",
+				new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), FigureTypes.JOE_2));
 	}
 
 	/**
@@ -41,10 +41,10 @@ public class TestJobs2dPatterns {
 		DriverFeature.addDriver("Logger Driver", loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
-		Job2dDriver lineDriver = new LineDriver(application);
+		Job2dDriver lineDriver = new LineDriver();
 		DriverFeature.addDriver("Line driver", lineDriver);
 
-		Job2dDriver specialLineDriver = new SpecialLineDriver(application);
+		Job2dDriver specialLineDriver = new SpecialLineDriver();
 		DriverFeature.addDriver("Special line driver", specialLineDriver);
 
 		DriverFeature.updateDriverInfo();
@@ -87,6 +87,7 @@ public class TestJobs2dPatterns {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				Application app = new Application("2d jobs Visio");
+				DrawerFeature.setupDrawerPlugin(app);
 				DriverFeature.setupDriverPlugin(app);
 
 				setupDrivers(app);
