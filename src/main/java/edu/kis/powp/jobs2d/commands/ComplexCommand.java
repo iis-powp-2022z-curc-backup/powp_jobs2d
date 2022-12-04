@@ -27,6 +27,8 @@ public class ComplexCommand implements DriverCommand{
 
     @Override
     public void execute(Job2dDriver driver) {
-    
+        for(DriverCommand command: commandsList) {
+            command.execute(driver);
+        }
     }
 }
