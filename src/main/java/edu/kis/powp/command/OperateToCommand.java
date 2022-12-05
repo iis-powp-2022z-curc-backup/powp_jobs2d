@@ -1,5 +1,7 @@
 package edu.kis.powp.command;
 
+import edu.kis.powp.jobs2d.Job2dDriver;
+
 public class OperateToCommand implements DriverCommand {
 
 	private int x;
@@ -12,7 +14,7 @@ public class OperateToCommand implements DriverCommand {
 	}
 
 	@Override
-	public void execute() {
-		// TODO Auto-generated method stub
+	public void execute(Job2dDriver driver) {
+		driver.setPosition(x, y);
 	}
 }
