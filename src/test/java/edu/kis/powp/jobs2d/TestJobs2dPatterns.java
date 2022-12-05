@@ -10,6 +10,9 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.factory.RectangleFactory;
+import edu.kis.powp.factory.SquareFactory;
+import edu.kis.powp.factory.TriangleFactory;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
@@ -19,6 +22,10 @@ import edu.kis.powp.jobs2d.features.DriverFeature;
 public class TestJobs2dPatterns {
 	private static final String FIGURE_JOE_1 = "Figure Joe 1";
 	private static final String FIGURE_JOE_2 = "Figure Joe 2";
+	private static final String RECTANGLE = "Rectangle";
+	private static final String SQUARE = "Square";
+	private static final String TRIANGLE = "Triangle";
+
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 	/**
@@ -32,8 +39,18 @@ public class TestJobs2dPatterns {
 		SelectTestFigureOptionListener selectTestFigureOptionListener2 = new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager(), 2);
 
+		SelectTestFigureOptionListener selectTestFigureOptionListener3 = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), 3);
+		SelectTestFigureOptionListener selectTestFigureOptionListener4 = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), 4);
+		SelectTestFigureOptionListener selectTestFigureOptionListener5 = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), 5);
+
 		application.addTest(FIGURE_JOE_1, selectTestFigureOptionListener1);
 		application.addTest(FIGURE_JOE_2, selectTestFigureOptionListener2);
+		application.addTest(SQUARE, selectTestFigureOptionListener3);
+		application.addTest(RECTANGLE, selectTestFigureOptionListener4);
+		application.addTest(TRIANGLE, selectTestFigureOptionListener5);
 	}
 
 	/**
@@ -48,16 +65,18 @@ public class TestJobs2dPatterns {
 
 		Job2dDriver driverBasicLine = new LineDrawerAdapter(LineFactory.getBasicLine());
 		DriverFeature.addDriver("Basic Line", driverBasicLine);
-		
+
 		Job2dDriver driverDottedLine = new LineDrawerAdapter(LineFactory.getDottedLine());
 		DriverFeature.addDriver("Dotted Line", driverDottedLine);
-		
+
 		Job2dDriver driverSpecialLine = new LineDrawerAdapter(LineFactory.getSpecialLine());
 		DriverFeature.addDriver("Special Line", driverSpecialLine);
-		
+
 		Job2dDriver driverConfigLine = new LineDrawerAdapter(new LineConfig(Color.GREEN, 10, true));
 		DriverFeature.addDriver("Config Line", driverConfigLine);
-		
+
+//		Job2dDriver figureSquare
+
 		DriverFeature.updateDriverInfo();
 	}
 

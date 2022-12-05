@@ -2,7 +2,13 @@ package edu.kis.powp.jobs2d.events;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import edu.kis.powp.command.DriverCommand;
 
+import edu.kis.powp.command.DriverCommand;
+import edu.kis.powp.factory.RectangleFactory;
+import edu.kis.powp.factory.SquareFactory;
+import edu.kis.powp.factory.TriangleFactory;
+import edu.kis.powp.jobs2d.Job2dDriver;
 import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
@@ -19,11 +25,18 @@ public class SelectTestFigureOptionListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		Job2dDriver driver = driverManager.getCurrentDriver();
 		DrawerFeature.getDrawerController().clearPanel();
 
 		if (option == 1)
 			FiguresJoe.figureScript1(driverManager.getCurrentDriver());
 		else if (option == 2)
 			FiguresJoe.figureScript2(driverManager.getCurrentDriver());
+		else if (option == 3)
+			SquareFactory.getSquare().execute(driver);
+		else if (option == 4)
+			RectangleFactory.getRectangle().execute(driver);
+		else if (option == 5)
+			TriangleFactory.getTriangle().execute(driver);
 	}
 }
