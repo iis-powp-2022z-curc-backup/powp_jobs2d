@@ -3,8 +3,8 @@ package edu.kis.powp.command;
 import edu.kis.powp.jobs2d.Job2dDriver;
 
 public class OperateToCommand implements DriverCommand{
-    private int x = 0;
-    private int y = 0;
+    private int x;
+    private int y;
 
     public OperateToCommand(int x, int y){
         super();
