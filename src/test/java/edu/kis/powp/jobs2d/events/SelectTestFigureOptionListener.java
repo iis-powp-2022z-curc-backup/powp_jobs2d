@@ -19,23 +19,20 @@ public class SelectTestFigureOptionListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		DrawerFeature.getDrawerController().clearPanel();
 		String testName = e.getActionCommand();
 		try {
 			switch (TestFigureEnum.fromString(testName)) {
 				case FIGURE_JOE_1:
-					DrawerFeature.getDrawerController().clearPanel();
 					FiguresJoe.figureScript1(driverManager.getCurrentDriver());
 					break;
 				case FIGURE_JOE_2:
-					DrawerFeature.getDrawerController().clearPanel();
 					FiguresJoe.figureScript2(driverManager.getCurrentDriver());
 					break;
 				case FIGURE_RECTANGLE:
-					DrawerFeature.getDrawerController().clearPanel();
 					CommandFactory.getDrawRectangleCommand().execute(driverManager.getCurrentDriver());
 					break;
 				case FIGURE_TRIANGLE:
-					DrawerFeature.getDrawerController().clearPanel();
 					CommandFactory.getDrawTriangleCommand().execute(driverManager.getCurrentDriver());
 					break;
 				default:
