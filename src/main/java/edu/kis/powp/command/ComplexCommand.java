@@ -7,7 +7,7 @@ import java.util.List;
 public class ComplexCommand implements DriverCommand{
     private List<DriverCommand> CommandList;
 
-    ComplexCommand(List<DriverCommand> CommandList){
+    public ComplexCommand(List<DriverCommand> CommandList){
         this.CommandList = CommandList;
     }
 
