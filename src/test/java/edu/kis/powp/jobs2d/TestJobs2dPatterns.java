@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.enums.TestFiguresEnum;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawerJobs2dAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
@@ -28,9 +29,12 @@ public class TestJobs2dPatterns {
 		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager());
 
-
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
-		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
+		application.addTest(TestFiguresEnum.FIGURE_JOE_1.toString(), selectTestFigureOptionListener);
+		application.addTest(TestFiguresEnum.FIGURE_JOE_2.toString(), selectTestFigureOptionListener);
+		application.addTest(TestFiguresEnum.TRAPEZE.toString(), selectTestFigureOptionListener);
+		application.addTest(TestFiguresEnum.RECTANGLE.toString(), selectTestFigureOptionListener);
+		application.addTest(TestFiguresEnum.TRIANGLE.toString(), selectTestFigureOptionListener);
+		application.addTest(TestFiguresEnum.CIRCLE.toString(), selectTestFigureOptionListener);
 	}
 
 	/**
