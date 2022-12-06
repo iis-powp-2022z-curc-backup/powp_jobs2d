@@ -3,8 +3,12 @@ package edu.kis.powp.jobs2d.events;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import edu.kis.powp.command.ComplexCommand;
+import edu.kis.powp.command.DriverCommand;
 import edu.kis.powp.factory.CommandFactory;
+import edu.kis.powp.jobs2d.Job2dDriver;
 import edu.kis.powp.jobs2d.drivers.DriverManager;
+import edu.kis.powp.jobs2d.drivers.StubDriver;
 import edu.kis.powp.jobs2d.enums.TestFigureEnum;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
@@ -35,6 +39,22 @@ public class SelectTestFigureOptionListener implements ActionListener {
 				case FIGURE_TRIANGLE:
 					CommandFactory.getDrawTriangleCommand().execute(driverManager.getCurrentDriver());
 					break;
+				case FIGURE_JOE_1_WITH_COMPLEX_COMMAND: {
+					StubDriver stubDriver = new StubDriver();
+					FiguresJoe.figureScript1(stubDriver);
+
+					DriverCommand complexCommand = new ComplexCommand(stubDriver.getCommands());
+					complexCommand.execute(driverManager.getCurrentDriver());
+					break;
+				}
+				case FIGURE_JOE_2_WITH_COMPLEX_COMMAND: {
+					StubDriver stubDriver = new StubDriver();
+					FiguresJoe.figureScript2(stubDriver);
+
+					DriverCommand complexCommand = new ComplexCommand(stubDriver.getCommands());
+					complexCommand.execute(driverManager.getCurrentDriver());
+					break;
+				}
 				default:
 					System.out.println("Test not yet implemented: " + testName);
 			}
