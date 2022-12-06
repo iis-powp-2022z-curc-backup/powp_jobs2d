@@ -6,7 +6,8 @@ public enum TestFigureEnum {
     FIGURE_RECTANGLE("Figure rectangle"),
     FIGURE_TRIANGLE("Figure triangle"),
     FIGURE_JOE_1_WITH_COMPLEX_COMMAND("Figure Joe 1 with complex command"),
-    FIGURE_JOE_2_WITH_COMPLEX_COMMAND("Figure Joe 2 with complex command");
+    FIGURE_JOE_2_WITH_COMPLEX_COMMAND("Figure Joe 2 with complex command"),
+    MIX_OF_FIGURES_WITH_COMPLEX_COMMAND("Mix of figures with complex command");
 
     private final String name;
 

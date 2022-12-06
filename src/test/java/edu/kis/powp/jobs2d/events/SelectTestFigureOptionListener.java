@@ -55,6 +55,15 @@ public class SelectTestFigureOptionListener implements ActionListener {
 					complexCommand.execute(driverManager.getCurrentDriver());
 					break;
 				}
+				case MIX_OF_FIGURES_WITH_COMPLEX_COMMAND: {
+					StubDriver stubDriver = new StubDriver();
+					CommandFactory.getDrawRectangleCommand().execute(stubDriver);
+					CommandFactory.getDrawTriangleCommand().execute(stubDriver);
+
+					DriverCommand complexCommand = new ComplexCommand(stubDriver.getCommands());
+					complexCommand.execute(driverManager.getCurrentDriver());
+					break;
+				}
 				default:
 					System.out.println("Test not yet implemented: " + testName);
 			}
