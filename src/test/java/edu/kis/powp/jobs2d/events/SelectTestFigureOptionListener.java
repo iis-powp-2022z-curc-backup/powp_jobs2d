@@ -22,9 +22,11 @@ public class SelectTestFigureOptionListener implements ActionListener {
 
 		switch (e.getActionCommand()){
 			case "Figure Joe 1":
+				DrawerFeature.getDrawerController().clearPanel();
 				FiguresJoe.figureScript1(driverManager.getCurrentDriver());
 				break;
 			case "Figure Joe 2":
+				DrawerFeature.getDrawerController().clearPanel();
 				FiguresJoe.figureScript2(driverManager.getCurrentDriver());
 				break;
 		}
