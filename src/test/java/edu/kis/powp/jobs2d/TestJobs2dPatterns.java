@@ -11,12 +11,13 @@ import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.Job2dAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
+
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
+import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-
 	/**
 	 * Setup test concerning preset figures in context.
 	 * 
@@ -30,7 +31,6 @@ public class TestJobs2dPatterns {
 		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
 
 	}
-
 	/**
 	 * Setup driver manager, and set default driver for application.
 	 * 
@@ -42,11 +42,13 @@ public class TestJobs2dPatterns {
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
 		Job2dDriver testDriver = new Job2dAdapter();
-		DriverFeature.addDriver("Buggy Simulator", testDriver);
+		DriverFeature.addDriver("Job 2d Adapter", testDriver);
+
+		Job2dDriver lineDrawerDriver = new LineDrawerAdapter();
+		DriverFeature.addDriver("Line Drawer Adapter", lineDrawerDriver);
 
 		DriverFeature.updateDriverInfo();
 	}
-
 	/**
 	 * Auxiliary routines to enable using Buggy Simulator.
 	 * 
@@ -60,7 +62,6 @@ public class TestJobs2dPatterns {
 		//defaultDrawerWindow.setVisible(true); // Uncomment for additional drawer window
 		defaultDrawerWindow.setVisible(false);
 	}
-
 	/**
 	 * Setup menu for adjusting logging settings.
 	 * 
@@ -78,7 +79,6 @@ public class TestJobs2dPatterns {
 				(ActionEvent e) -> logger.setLevel(Level.SEVERE));
 		application.addComponentMenuElement(Logger.class, "OFF logging", (ActionEvent e) -> logger.setLevel(Level.OFF));
 	}
-
 	/**
 	 * Launch the application.
 	 */
