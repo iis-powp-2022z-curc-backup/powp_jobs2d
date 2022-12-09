@@ -4,7 +4,7 @@ import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.ILine;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.jobs2d.Job2dDriver;
-import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
+//import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 
 public class Job2dAdapter extends DrawPanelController implements Job2dDriver {
@@ -22,7 +22,7 @@ public class Job2dAdapter extends DrawPanelController implements Job2dDriver {
 	@Override
 	public void operateTo(int x, int y) {
 		DrawPanelController controller = DrawerFeature.getDrawerController();
-		DefaultDrawerFrame.getDefaultDrawerFrame().setVisible(true);
+		//DefaultDrawerFrame.getDefaultDrawerFrame().setVisible(true);
 		ILine line = LineFactory.getBasicLine();
 		line.setStartCoordinates(this.startX, this.startY);
 		line.setEndCoordinates(x, y);
