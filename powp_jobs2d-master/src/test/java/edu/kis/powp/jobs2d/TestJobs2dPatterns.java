@@ -4,19 +4,15 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.awt.event.ActionListener;
 
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.powp.appbase.Application;
-import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
-import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter2;
+import edu.kis.powp.jobs2d.drivers.adapter.Jobs2dDriverAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
+import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
-import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
-
-import javax.sound.sampled.Line;
 
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -27,25 +23,10 @@ public class TestJobs2dPatterns {
 	 * @param application Application context.
 	 */
 	private static void setupPresetTests(Application application) {
+		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager());
 
-		ActionListener selectTestFigureOptionListener1 = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent actionEvent) {
-				DrawerFeature.getDrawerController().clearPanel();
-				FiguresJoe.figureScript1(DriverFeature.getDriverManager().getCurrentDriver());
-			}
-		};
-
-		ActionListener selectTestFigureOptionListener2 = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent actionEvent) {
-				DrawerFeature.getDrawerController().clearPanel();
-				FiguresJoe.figureScript2(DriverFeature.getDriverManager().getCurrentDriver());
-			}
-		};
-
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener1);
-		application.addTest("Figure Joe 2", selectTestFigureOptionListener2);
+		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
 	}
 
 	/**
@@ -58,11 +39,8 @@ public class TestJobs2dPatterns {
 		DriverFeature.addDriver("Logger Driver", loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
-		Job2dDriver testDriver = new LineDrawerAdapter();
-		DriverFeature.addDriver("LineDrawerAdapter", testDriver);
-
-		Job2dDriver LineDrawerAdapter2 = new LineDrawerAdapter2();
-		DriverFeature.addDriver("LineDrawerAdapter2", LineDrawerAdapter2);
+		Job2dDriver testDriver = new Jobs2dDriverAdapter();
+		DriverFeature.addDriver("Buggy Simulator", testDriver);
 
 		DriverFeature.updateDriverInfo();
 	}
@@ -101,19 +79,17 @@ public class TestJobs2dPatterns {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				Application app = new Application("2d jobs Visio");
-				DrawerFeature.setupDrawerPlugin(app);
+		EventQueue.invokeLater(() -> {
+			Application app = new Application("2d jobs Visio");
+			DrawerFeature.setupDrawerPlugin(app);
+			setupDefaultDrawerVisibilityManagement(app);
 
+			DriverFeature.setupDriverPlugin(app);
+			setupDrivers(app);
+			setupPresetTests(app);
+			setupLogger(app);
 
-				DriverFeature.setupDriverPlugin(app);
-				setupDrivers(app);
-				setupPresetTests(app);
-				setupLogger(app);
-
-				app.setVisibility(true);
-			}
+			app.setVisibility(true);
 		});
 	}
 
