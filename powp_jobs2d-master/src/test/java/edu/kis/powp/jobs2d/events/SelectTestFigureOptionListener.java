@@ -25,7 +25,7 @@ public class SelectTestFigureOptionListener implements ActionListener {
 
 		if(e.getActionCommand().equals(FIGURE_JOE_1))
 			FiguresJoe.figureScript1(driverManager.getCurrentDriver());
-		else if(e.getActionCommand().equals(FIGURE_JOE_2)
+		else if(e.getActionCommand().equals(FIGURE_JOE_2))
 			FiguresJoe.figureScript2(driverManager.getCurrentDriver());
 		else if(e.getActionCommand().equals(RECTANGLE))
 			ComplexCommandFactory.getRectangle().execute(driverManager.getCurrentDriver());
