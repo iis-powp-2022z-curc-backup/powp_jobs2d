@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
+import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
@@ -26,18 +27,15 @@ public class TestJobs2dPatterns {
 	 * @param application Application context.
 	 */
 	private static void setupPresetTests(Application application) {
-		ActionListener selectTestFigureOptionListener1 = actionEvent -> {
-			DrawerFeature.getDrawerController().clearPanel();
-			FiguresJoe.figureScript1(DriverFeature.getDriverManager().getCurrentDriver());
-		};
+		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager());
 
-		ActionListener selectTestFigureOptionListener2 = actionEvent -> {
-			DrawerFeature.getDrawerController().clearPanel();
-			FiguresJoe.figureScript2(DriverFeature.getDriverManager().getCurrentDriver());
-		};
 
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener1);
-		application.addTest("Figure Joe 2", selectTestFigureOptionListener2);
+		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
+		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
+		application.addTest("Rectangle", selectTestFigureOptionListener);
+		application.addTest("Isosceles Triangle", selectTestFigureOptionListener);
+		application.addTest("Square", selectTestFigureOptionListener);
 	}
 
 	/**
