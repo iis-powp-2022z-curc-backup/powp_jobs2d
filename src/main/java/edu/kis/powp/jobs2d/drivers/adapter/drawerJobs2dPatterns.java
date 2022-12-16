@@ -26,7 +26,7 @@ public class drawerJobs2dPatterns extends DrawPanelController implements Job2dDr
 	public void operateTo(int x, int y) {
 		DrawPanelController controller =
 				DrawerFeature.getDrawerController();
-		DefaultDrawerFrame.getDefaultDrawerFrame().setVisible(true);
+
 		ILine line = LineFactory.getBasicLine();
 		line.setStartCoordinates(this.startX, this.startY);
 		line.setEndCoordinates(x, y);
