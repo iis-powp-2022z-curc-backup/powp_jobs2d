@@ -6,14 +6,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ComplexCommand implements DriverCommand {
-    private  final List<DriverCommand> driverCommandList = new LinkedList<>();
+    private final List<DriverCommand> commands;
 
-    public void addCommand(DriverCommand command) {
-        this.driverCommandList.add(command);
+    public ComplexCommand(List<DriverCommand> commands) {
+        this.commands = commands;
     }
 
     @Override
     public void execute(Job2dDriver driver) {
-        driverCommandList.forEach(driverCommand -> driverCommand.execute(driver));
+        this.commands.forEach(command -> command.execute(driver));
     }
 }
